@@ -7,15 +7,21 @@ namespace vehicle_parking_system.Models
 {
     public class ParkingSystem
     {
-        public string TamanhoVeiculo { get; set; }
-        public string PlacaVeiculo { get; set; }
-        public List<string> VeiculosCadastrados { get; set; } = new List<string>();
+        public DateTime HoraEntrada { get; set; } = DateTime.Now;
+        public List<string> Veiculos { get; set; } = new List<string>();
 
-        public ParkingSystem(string tamanhoVeiculo,
-                             string placaVeiculo)
+        public void CadastrarVeiculo()
         {
-            tamanhoVeiculo = TamanhoVeiculo;
-            placaVeiculo = PlacaVeiculo;
+            Console.Write("Digite a placa do veículo: ");
+            string placaVeiculo = Console.ReadLine().ToUpper();
+            Veiculos.Add(placaVeiculo);
+            Console.WriteLine($"O veículo de placa {placaVeiculo} foi cadastrado com sucesso.");
+            Console.WriteLine($"Entrada do veículo as {HoraEntrada.Hour}:{HoraEntrada.Minute}");
+        }
+
+        public void  PesquisarListaVeiculos()
+        {
+            Veiculos.ToList();
         }
     }
 }
